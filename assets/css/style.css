@@ -12,9 +12,13 @@
   --very-light-grayish-cyan: hsl(189, 41%, 97%);
   --white: hsl(0, 0%, 100%);
   --result-empty: hsl(183, 78%, 23%);
+  --button-active: hsl(174, 58%, 76%);
 
   /* Font */
   --main-font: 'Space Mono', monospace;
+
+  /* Transition */
+  --transition-time: all 300ms ease-in-out;
 }
 
 /* Remove Input Defaults */
@@ -42,7 +46,7 @@ input {
   background-color: var(--very-light-grayish-cyan);
   text-align: right;
   color: var(--very-dark-cyan);
-  font-size: 1.375rem;
+  font-size: 1.5625rem;
   height: 50px;
   width: calc(100% - 15px);
   padding-right: 15px;
@@ -63,7 +67,7 @@ header {
   align-items: center;
 }
 
-header > img {
+header:first-child {
   padding: 50px 0px;
 }
 
@@ -93,11 +97,15 @@ header > img {
   justify-content: center;
   grid-template-columns: 50px 1fr;
   background-color: var(--very-light-grayish-cyan);
-  height: 3.125rem;
-  border-radius: 0.3125rem;
+  height: 50px;
+  border-radius: 5px;
 }
 
-.input:hover, .input:focus-within {
+.input-outline {
+  transition: var(--transition-time);
+}
+
+.input-outline:hover, .input-outline:focus-within {
   outline: 2px solid var(--strong-cyan);
 }
 
@@ -114,15 +122,11 @@ header > img {
 }
 
 .input__percentage {
-  border-radius: 0.3125rem;
+  border-radius: 5px;
   width: 100%;
 }
 
-.input__percentage:hover, .input__percentage:focus {
-  outline: 2px solid var(--strong-cyan);
-}
-
-.buttons {
+.buttonsDiv {
   width: 140px;
   height: 50px;
 }
@@ -131,21 +135,29 @@ button {
   outline: none;
   border: none;
   cursor: pointer;
-  border-radius: 0.3125rem;
-  font-size: 20px;
+  border-radius: 5px;
+  font-size: 25px;
 }
 
-.buttons > button {
+.button {
   width: 100%;
   height: 100%;
-  background-color: var(--very-dark-cyan);
-  color: var(--white);
+  transition: var(--transition-time);
 }
 
-.buttons > button:hover, .buttons > button:focus {
-  background-color: var(--strong-cyan);
+.button:hover {
+  background-color: var(--button-active);
   color: var(--very-dark-cyan);
-  border: none;
+}
+
+.buttonInactive {
+  color: var(--white);
+  background-color: var(--very-dark-cyan);
+}
+
+.buttonActive {
+  background-color: var(--button-active);
+  color: var(--very-dark-cyan);
 }
 
 i {
@@ -183,7 +195,31 @@ i {
   height: 50px;
   text-transform: uppercase;
   color: var(--very-dark-cyan);
+}
+
+.resetInactive {
   background-color: var(--result-empty);
+  cursor: not-allowed;
+}
+
+.resetActive {
+  background-color: var(--strong-cyan);
+  transition: var(--transition-time);
+}
+  
+.resetActive:hover {
+  background-color: var(--button-active);
+}
+
+.errorInput {
+  outline: 2px solid #cd7760;
+  transition: var(--transition-time);
+}
+
+#errorMessagePeople {
+  color: hsl(11, 58%, 55%);
+  float: right;
+  transition: var(--transition-time);
 }
 
 /* Desktop Design */
@@ -201,7 +237,7 @@ i {
   }
 
   .output {
-    padding: 60px 25px 40px;
+    padding: 60px 40px 40px;
     gap: 0;
   }
 
@@ -211,14 +247,14 @@ i {
   }
 
   .output__box:nth-child(1) {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
 
   .output__box:nth-child(2) {
-    margin-bottom: 80px;
+    margin-bottom: 100px;
   }
 
-  .buttons {
+  .buttonsDiv {
     width: 121px;
   }
 }
