@@ -14,6 +14,8 @@ Users should be able to:
 
 <a href="https://bruno-ryan.github.io/tip-calculator/" target="_blank"> Project Link 🔗</a>
 
+<a href="https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX" target="_blank"> Frontend Mentor Challenge Link 🔗</a>
+
 ## Built with
 
 - HTML
